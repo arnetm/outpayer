@@ -91,6 +91,8 @@ foreach($unsplitted as $settlement){
         
     }
 
+    ## 3.2 Get next settlement 
+
     while(null !== $payments->next()){
     
         $payments = $payments->next();
