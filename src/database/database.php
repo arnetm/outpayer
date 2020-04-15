@@ -4,7 +4,10 @@
  * @Version 1.0
  * @Package Database
  */
+
+
 class Database{
+<<<<<<< HEAD
 	/* 
 	 * Create variables for credentials to MySQL database
 	 * The variables have been declared as private. This
@@ -14,11 +17,16 @@ class Database{
 	private $db_host = "34.77.28.18";  // Change as required
 	private $db_user = "root";  // Change as required
 	private $db_pass = "bdqL9hLWNr31";  // Change as required
+=======
+
+	private $db_host = null;  // Change as required
+	private $db_user = "root";  // Change as required
+	private $db_pass = "nXCx7@usECw2w_ikugn";  // Change as required
+>>>>>>> e7dc7f71e74d70d76ba1248fb16c9e4f126f5c18
 	private $db_name = "outpayer";	// Change as required
-	
-	/*
-	 * Extra variables that are required by other function such as boolean con variable
-	 */
+	private $db_port = null;
+	private $db_socket = "/cloudsql/outpayer:europe-west1:mainbase";
+
 	private $con = false; // Check to see if the connection is active
     private $myconn = ""; // This will be our mysqli object
 	private $result = array(); // Any results from a query will be stored here
@@ -28,7 +36,7 @@ class Database{
 	// Function to make connection to database
 	public function connect(){
 		if(!$this->con){
-			$this->myconn = new mysqli($this->db_host,$this->db_user,$this->db_pass,$this->db_name);  // mysql_connect() with variables defined at the start of Database class
+			$this->myconn = new mysqli($this->db_host,$this->db_user,$this->db_pass,$this->db_name, $this->db_port, $this->db_socket) ;  // mysql_connect() with variables defined at the start of Database class
             if($this->myconn->connect_errno > 0){
                 array_push($this->result,$this->myconn->connect_error);
                 return false; // Problem selecting database return FALSE
@@ -245,3 +253,5 @@ class Database{
         return $this->myconn->real_escape_string($data);
     }
 } 
+
+?>

@@ -1,10 +1,5 @@
 <?php 
 
-#extre
-
-## Last check 
-$lastcheck = "2020/01/01 00:00";
-
 ## Start includes
 
 require_once __DIR__ . "/vendor/autoload.php";
