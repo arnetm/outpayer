@@ -11,9 +11,9 @@ class Database{
 	 * means that they will only be available with the 
 	 * Database class
 	 */
-	private $db_host = "localhost";  // Change as required
+	private $db_host = "34.77.28.18";  // Change as required
 	private $db_user = "root";  // Change as required
-	private $db_pass = "";  // Change as required
+	private $db_pass = "bdqL9hLWNr31";  // Change as required
 	private $db_name = "outpayer";	// Change as required
 	
 	/*
