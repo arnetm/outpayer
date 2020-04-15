@@ -1,8 +1,14 @@
+# This app.yaml is for deploying to instances of Cloud SQL running MySQL.
+# See app-postgres.yaml for running Cloud SQL with PostgreSQL.
+
+# [START gae_cloudsql_mysql_env]
 # Use the PHP 7.3 runtime (BETA) by replacing "php72" below with "php73"
 runtime: php72
 
-# Defaults to "serve index.php" and "serve public/index.php". Can be used to
-# serve a custom PHP front controller (e.g. "serve backend/index.php") or to
-# run a long-running PHP script as a worker process (e.g. "php worker.php").
-#
-# entrypoint: serve index.php
+env_variables:
+  # Replace USER, PASSWORD, DATABASE, and CONNECTION_NAME with the
+  # values obtained when configuring your Cloud SQL instance.
+  CLOUDSQL_USER: "root" 
+  CLOUDSQL_PASSWORD: "nXCx7@usECw2w_ikugn"
+  CLOUDSQL_DSN: "mysql:dbname=DATABASE;unix_socket=/cloudsql/outpayer:europe-west1:mainbase"
+# [END gae_cloudsql_mysql_env]
