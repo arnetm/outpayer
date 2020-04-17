@@ -47,16 +47,23 @@ class Settlement{
     public function listUnsplitted(){
         $db = new Database();
         $db->connect();
-        $db->select('settlements', "id, settlementReference, splitted", null, "splitted = '0'"); // Table name
+        $db->select('settlements', "id, settlementReference, splitted", null, "outboundId is null"); // Table name
         $res = $db->getResult(); 
         return $res;
     }
 
-    public function setSplitted($settlementReference, $totalSplit){
+    public function setSplitted($settlementReference, $totalSplit, $totalTransactions){
         $db = new Database();
         $db->connect();
-        $db->update('settlements',array('splitted'=>"1", "totalSplit"=>$totalSplit),"settlementReference='" . $settlementReference . "'"); // Table name, column names and values, WHERE conditions
+        $db->update('settlements',array('splitted'=>"1", "totalSplit"=>$totalSplit,"totalTransactions"=>$totalTransactions),"settlementReference='" . $settlementReference . "'"); // Table name, column names and values, WHERE conditions
         $res = $db->getResult();  
+    }
+
+    public function setOutboundId($outboundId, $id){
+        $db = new Database();
+        $db->connect();
+        $db->update('settlements',array('outboundId'=>$outboundId),"id=" . $id); // Table name, column names and values, WHERE conditions
+        $res = $db->getResult();
     }
 
 } 
