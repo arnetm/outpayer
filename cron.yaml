@@ -1,0 +1,4 @@
+cron:
+- description: "Daily export"
+  url: /start
+  schedule: every day 12:00

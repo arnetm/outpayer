@@ -12,3 +12,4 @@ env_variables:
   CLOUDSQL_PASSWORD: "nXCx7@usECw2w_ikugn"
   CLOUDSQL_DSN: "mysql:dbname=outpayer;unix_socket=/cloudsql/outpayer:europe-west1:mainbase"
 # [END gae_cloudsql_mysql_env]
+

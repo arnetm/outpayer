@@ -1,5 +1,7 @@
 {
     "require": {
-        "mollie/mollie-api-php": "^2.0"
+        "mollie/mollie-api-php": "^2.0",
+        "google/cloud-storage": "^1.20",
+        "google/cloud-tasks": "^1.6"
     }
 }

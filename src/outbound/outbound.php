@@ -1,5 +1,7 @@
 <?php
 
+use Google\Cloud\Storage\StorageClient;
+
 class Outbound{
 
     public function createOutbound($countOutbound, $runId){
@@ -50,7 +52,9 @@ class Outbound{
 
                         $writer->writeElement('MsgId', $messageID);
                         $writer->writeElement('CreDtTm', $creationDate);
+                        $writer->writeElement('BtchBookg', "false");
                         $writer->writeElement('NbOfTxs', $numberOfTransactions);
+                        $writer->writeElement('Grpg', "MIXD");
 
                         $writer->startElement("InitgPty");
                             $writer->writeElement('Nm', "Mollie"); 
@@ -62,9 +66,7 @@ class Outbound{
 
                     $writer->startElement("PmtInf");
 
-                        $writer->writeElement('PmtInfId', $paymentID);
                         $writer->writeElement('PmtMtd', "TRF"); 
-                        $writer->writeElement('BtchBookg', "false"); 
 
                         $writer->startElement("PmtTpInf");
 
@@ -138,11 +140,19 @@ class Outbound{
         $writer->endDocument();
 
         $content = $writer->flush();
+        
+        $bucketName = "outpayer.appspot.com";
+        $objectName = $outboundId . ".xml";
 
-        $fp = fopen("output/" . $outboundId . ".xml", "w");
-        fwrite($fp,$content);
-        fclose($fp);
+        $storage = new StorageClient();
+        $bucket = $storage->bucket($bucketName);
+        $object = $bucket->upload($content, [
+            'name' => $objectName
+        ]);
 
+        $url = "https://storage.cloud.google.com/" . $bucketName . "/" . $objectName;
+
+        return $url;
     
 
     }
