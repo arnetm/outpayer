@@ -10,6 +10,7 @@ env_variables:
   # values obtained when configuring your Cloud SQL instance.
   CLOUDSQL_USER: "root" 
   CLOUDSQL_PASSWORD: "nXCx7@usECw2w_ikugn"
-  CLOUDSQL_DSN: "mysql:dbname=outpayer;unix_socket=/cloudsql/outpayer:europe-west1:mainbase"
+  CLOUDSQL_DATABASE: "outpayer"
+  CLOUDSQL_SOCKET: "/cloudsql/outpayer:europe-west1:mainbase"
 # [END gae_cloudsql_mysql_env]
 

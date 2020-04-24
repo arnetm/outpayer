@@ -110,7 +110,7 @@ class Outbound{
 
                         $writer->startElement("Amt");
                             $writer->startElement("InstdAmt");
-                                $writer->writeAttribute('Ccy', $transaction['currency']);
+                                $writer->writeAttribute('Ccy', "EUR");
                                 $writer->text(number_format($transaction['amount'],2));    
                             $writer->endElement();
                         $writer->endElement();
@@ -150,7 +150,7 @@ class Outbound{
             'name' => $objectName
         ]);
 
-        $url = "https://storage.cloud.google.com/" . $bucketName . "/" . $objectName;
+        $url = $objectName;
 
         return $url;
     

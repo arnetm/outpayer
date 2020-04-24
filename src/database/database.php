@@ -9,11 +9,7 @@
 class Database{
 
 	private $db_host = null;  // Change as required
-	private $db_user = "root";  // Change as required
-	private $db_pass = "nXCx7@usECw2w_ikugn";  // Change as required
-	private $db_name = "outpayer";	// Change as required
 	private $db_port = null;
-	private $db_socket = "/cloudsql/outpayer:europe-west1:mainbase";
 
 	private $con = false; // Check to see if the connection is active
     private $myconn = ""; // This will be our mysqli object
@@ -24,7 +20,7 @@ class Database{
 	// Function to make connection to database
 	public function connect(){
 		if(!$this->con){
-			$this->myconn = new mysqli($this->db_host,$this->db_user,$this->db_pass,$this->db_name, $this->db_port, $this->db_socket) ;  // mysql_connect() with variables defined at the start of Database class
+			$this->myconn = new mysqli($this->db_host,getenv('CLOUDSQL_USER'),getenv('CLOUDSQL_PASSWORD'),getenv('CLOUDSQL_DATABASE'), $this->db_port, getenv('CLOUDSQL_SOCKET')) ;  // mysql_connect() with variables defined at the start of Database class
             if($this->myconn->connect_errno > 0){
                 array_push($this->result,$this->myconn->connect_error);
                 return false; // Problem selecting database return FALSE

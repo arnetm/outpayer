@@ -108,7 +108,6 @@ if(!empty($accountList)){
                 $outboundTransactions[$count]['id'] = $id;
                 $outboundTransactions[$count]['description'] = $description;
                 $outboundTransactions[$count]['amount'] = $amount;
-                $outboundTransactions[$count]['currency'] = $currency;
                 $outboundTransactions[$count]['destinationName'] = $destinationName;
                 $outboundTransactions[$count]['destinationIban'] = $destinationIban;
             
@@ -138,7 +137,6 @@ if(!empty($accountList)){
                     $outboundTransactions[$count]['id'] = $id;
                     $outboundTransactions[$count]['description'] = $description;
                     $outboundTransactions[$count]['amount'] = $amount;
-                    $outboundTransactions[$count]['currency'] = $currency;
                     $outboundTransactions[$count]['destinationName'] = $destinationName;
                     $outboundTransactions[$count]['destinationIban'] = $destinationIban;
                        
@@ -177,7 +175,7 @@ if(!empty($accountList)){
 
         $outboundClass->setCompleted($result[0]);
 
-        echo "Run completed: <a href='" . $url . "'>download file</a>";
+        echo "Run completed: file generated with name " . $result[0];
 
         
     }
