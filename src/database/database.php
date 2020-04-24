@@ -10,6 +10,7 @@ class Database{
 
 	private $db_host = null;  // Change as required
 	private $db_port = null;
+	private $db_name = "outpayer";
 
 	private $con = false; // Check to see if the connection is active
     private $myconn = ""; // This will be our mysqli object
